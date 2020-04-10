@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+#from django.http import HttpResponse
+#import music_recommendation
+
 # Create your views here.
 def home(request):
-    return HttpResponse('<h1>Hello! Its Working!!</h1>')
+    return render(request,'recommendpg/home.html')
+
+def login(request):
+    return render(request,'recommendpg/login.html')
