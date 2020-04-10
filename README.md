@@ -8,3 +8,10 @@ Music recommendation system using Spotify API and login interface backend
 
  ## Windows
     
+
+
+
+# Install the package dependencies
+While in the root directory of the project, run the following command:
+   `pip3 install -r requirements.txt`
+
