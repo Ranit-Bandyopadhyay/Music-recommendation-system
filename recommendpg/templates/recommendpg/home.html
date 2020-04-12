@@ -1,4 +1,5 @@
 {% extends "recommendpg/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 <!-- Full Page Intro -->
 <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2848%29.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -45,10 +46,75 @@
   </div>
 </main>
 <!--Main Layout-->
-<div class="container center">
-<form class="form-inline mr-auto">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+<div class="container" style="padding-left: 25%;">
+<!--<form class="form-inline mr-auto" method="POST">
+  {% csrf_token %}
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="artist">
     <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
-  </form>
+  </form> -->
+<form action="#!" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+    <a href="{% url 'reco-home' %}">Go Back</a>
+</form>
+</div>
+
+  <div id="preloader">
+ <!-- <div class="la-ball-atom la-dark la-3x">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div> -->
+    <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+      </div>
+  </div>
+  <div class="container">
+  <div class="row row-cols-1 row-cols-md-3">
+   
+    {% for track in tracks %}
+      <div class="col mb-4">
+        <!-- Card -->
+        <div class="card">
+    
+          <!--Card image-->
+          <div class="view overlay">
+            <img class="card-img-top" src="{{ track.art }}"
+              alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+    
+          <!--Card content-->
+          <div class="card-body">
+    
+            <!--Title-->
+            <h4 class="card-title">{{ track.name }}</h4>
+            <!--Text-->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <!--<button type="button" class="btn btn-light-blue btn-md">Read more</button> -->
+            <a href="{{ track.link }}"><i class="fab fa-spotify fa-2x "></i></a>
+    
+          </div>
+    
+        </div>
+        <!-- Card -->
+      </div>
+      {% endfor %}
+    </div>
+</div>
 </div>
   {% endblock %}

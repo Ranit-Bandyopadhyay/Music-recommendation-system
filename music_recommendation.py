@@ -1,6 +1,12 @@
 import songs as s
+import platform
 
-f = open('C:\\Users\\user\\Desktop\\important\\machine learning files\\csv\\music\\songDb.tsv', 'r')
+if(platform.system()=='Windows'):
+    f = open('C:\\Users\\user\\Desktop\\important\\machine learning files\\csv\\music\\songDb.tsv', 'r')
+
+else:
+    f = open('/home/arnamaity/Hackathons/Music-recommendation-system/spotify-music-genre-list/songDb.tsv','r',encoding="ISO-8859-1")
+
 y = f.read().splitlines()
 count = []
 for i in range(len(y)):
@@ -55,6 +61,7 @@ X_test = s.function()
 model.fit(X_train, y_train)
 #print(model.score(X_train,y_train))
 p.append(model.predict(X_test))
+print(p)
 p[0].sort()
 
 #print('GETTING YOUR RECOMMENDATION....')
