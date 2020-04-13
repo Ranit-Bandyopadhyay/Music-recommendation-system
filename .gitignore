@@ -1,6 +1,6 @@
 venv/
 __pycache__/
-mrs/SECRET_KEY
+mrs/SECRET_KEY.txt
 db.sqlite3
 test.py
 spotify-music-genre-list/
