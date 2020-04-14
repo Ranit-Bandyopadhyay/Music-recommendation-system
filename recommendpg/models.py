@@ -1,7 +1,7 @@
 from django.db import models
-import songs as s
 # Create your models here.
 class Tracks(models.Model):
+    id = models.CharField(max_length=100,primary_key=True)
     name = models.CharField(max_length=100)
     link = models.CharField(max_length=500)
     art = models.CharField(max_length=500)

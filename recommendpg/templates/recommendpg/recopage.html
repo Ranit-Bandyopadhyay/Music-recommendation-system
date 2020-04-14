@@ -1,0 +1,46 @@
+{% extends "recommendpg/base.html" %}
+{% block content %}
+<div class="container">
+<h1 class="flob" style="padding-top:20px">You may also like ....</h1>
+</div>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3">
+
+        {% for track in tracks %}
+        <div class="col mb-4">
+            <!-- Card -->
+            <div class="card">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img class="card-img-top" src="{{ track.art }}"
+                         alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+
+                    <!--Title-->
+                    <h4 class="card-title">{{ track.name }}</h4>
+                    <!--Text-->
+                   <p class="card-text">{{ track.album.album_type }}</p>
+                            <ul>
+                    {% for artist in track.album.artists %}
+                                <li class="card-text">{{ artist.name }}</li>
+                    {% endfor %}
+                                <li class="card-text"> Duration: {{ track.duration }}</li>
+                            </ul>
+                    <a href="{{ track.link }}"><i class="fab fa-spotify fa-2x "></i></a>
+
+                </div>
+
+            </div>
+            <!-- Card -->
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -19,7 +19,9 @@
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="{% static 'recommendpg/css/style.css' %}">
         <!-- Google Fonts-->
-        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <style>
                 .fmer {
                   font-family: 'Merriweather', serif;
@@ -27,6 +29,11 @@
                   text-align: center;
                 }
 
+                .flob{
+                    font-family: 'Lobster', cursive;
+                  font-size: 30px;
+                  text-align: center;
+                }
                 .image-border {
                  border-color:grey;
                  border-width: 5px;
@@ -45,7 +52,7 @@
     </head>
     <body>
       <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark black lighten-1">
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color-dark lighten-1">
     <a class="navbar-brand fmer" href="#">WELCOME TO THE MUSIC RECOMMENDATION SYSTEM</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
       aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,10 +69,15 @@
       </ul>  -->
       {% if user.is_authenticated %}
       <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'reco-home' %}">Home</a>
+        </li>
         <li class="nav-item avatar">
           <a class="nav-link p-0" href="{% url 'logout' %}">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
-              alt="avatar image" height="35">
+            <img src="{% static 'recommendpg/assets/583926332.jpg' %}" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35"></a>
+            </li>
+          </ul>
       {% else %}
              <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -77,9 +89,8 @@
       </ul>
 
       {% endif %}
-          </a>
-        </li>
-      </ul>
+
+
     </div>
   </nav>
   <!--/.Navbar -->
@@ -106,14 +117,15 @@
 
 
         <!-- Footer -->
-<footer class="page-footer font-small black pt-4 ">
-
+       {% block footer-head %}
+        <footer class="page-footer font-small unique-color-dark pt-4 ">
+        {% endblock %}
         <!-- Footer Text -->
         <div class="container-fluid text-center text-md-left">
 
           <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-6 font-weight-bolder"><em><strong><h5>Contact the Devs:</h5></strong></em></div>
+                <div class="col-md-6 font-weight-bolder"><em><strong><h5 style="padding-left:50px">Contact the Devlopers:</h5></strong></em></div>
                 <div class="col-md-3"></div>
           </div>
       
@@ -191,6 +203,5 @@
   
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
-
     </body>
 </html>

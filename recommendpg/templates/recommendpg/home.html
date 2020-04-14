@@ -1,32 +1,6 @@
 {% extends "recommendpg/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<!-- Full Page Intro -->
-<div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2848%29.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-    <!-- Mask & flexbox options-->
-    <div class="mask rgba-black-light align-items-center">
-      <!-- Content -->
-      <div class="container">
-        <!--Grid row-->
-        <div class="row">
-          <!--Grid column-->
-          <div class="col-md-12 mb-4 white-text text-center">
-            <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Minimalist intro</strong></h1>
-            <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
-            <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Photography & design</strong></h5>
-            <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s">portfolio</a>
-            <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s">About me</a>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </div>
-      <!-- Content -->
-    </div>
-    <!-- Mask & flexbox options-->
-  </div>
-  <!-- Full Page Intro -->
-</header>
 <!-- Main navigation -->
 <!--Main Layout-->
 <main>
@@ -35,10 +9,10 @@
     <div class="row py-5">
       <!--Grid column-->
       <div class="col-md-12 text-center">
-        <p>Lorem ipsum dolor sit amet, anim id est laborum.</p>
-        <p>Sed ut perspiciatis unde omnis iste natus veniam,velit  nulla pariatur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, deserunt mollit anim id est laborum.</p>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+        <p class="flob">Welcome to the Music Recommender!</p>
+        <p class="flob">Ready to get started? Let's Go!</p>
+          <p class="flob">Just enter the name of the Artist in the searchbar below...</p>
+          <p class="flob">To get the recommendations, just click of the album art of the corresponding song...</p>
       </div>
       <!--Grid column-->
     </div>
@@ -59,7 +33,6 @@
     <a href="{% url 'reco-home' %}">Go Back</a>
 </form>
 </div>
-
   <div id="preloader">
  <!-- <div class="la-ball-atom la-dark la-3x">
       <div></div>
@@ -79,42 +52,51 @@
         <div class="sk-cube sk-cube9"></div>
       </div>
   </div>
-  <div class="container">
-  <div class="row row-cols-1 row-cols-md-3">
-   
-    {% for track in tracks %}
-      <div class="col mb-4">
-        <!-- Card -->
-        <div class="card">
-    
-          <!--Card image-->
-          <div class="view overlay">
-            <img class="card-img-top" src="{{ track.art }}"
-              alt="Card image cap">
-            <a href="#!">
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-    
-          <!--Card content-->
-          <div class="card-body">
-    
-            <!--Title-->
-            <h4 class="card-title">{{ track.name }}</h4>
-            <!--Text-->
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-            <!--<button type="button" class="btn btn-light-blue btn-md">Read more</button> -->
-            <a href="{{ track.link }}"><i class="fab fa-spotify fa-2x "></i></a>
-    
-          </div>
-    
+</div>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3">
+
+        {% for track in tracks %}
+        <div class="col mb-4">
+            <!-- Card -->
+            <div class="card">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img class="card-img-top" src="{{ track.art }}"
+                         alt="Card image cap">
+                    <a href="http://127.0.0.1:8000/recommend/{{ track.id }}">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+
+                    <!--Title-->
+                    <h4 class="card-title">{{ track.name }}</h4>
+                    <!--Text-->
+                    <p class="card-text">{{ track.album.album_type }}</p>
+                            <ul>
+                    {% for artist in track.album.artists %}
+                                <li class="card-text">{{ artist.name }}</li>
+                    {% endfor %}
+                    <li class="card-text"> Duration: {{ track.duration }}</li>
+                                </ul>
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <!--<button type="button" class="btn btn-light-blue btn-md">Read more</button> -->
+                    <a href="{{ track.link }}"><i class="fab fa-spotify fa-2x "></i></a>
+
+                </div>
+
+            </div>
+            <!-- Card -->
         </div>
-        <!-- Card -->
-      </div>
-      {% endfor %}
+        {% endfor %}
     </div>
 </div>
-</div>
-  {% endblock %}
+{% endblock %}
+
+{% block footer-head %}
+<footer class="page-footer font-small unique-color-dark pt-4 ">
+{% endblock %}
