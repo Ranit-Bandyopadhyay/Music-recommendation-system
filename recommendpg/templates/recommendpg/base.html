@@ -70,7 +70,10 @@
       {% if user.is_authenticated %}
       <ul class="navbar-nav ml-auto nav-flex-icons">
           <li class="nav-item">
-          <a class="nav-link" href="{% url 'reco-home' %}">Home</a>
+          <a class="nav-link" style="font-family: Lobster; font-size: 20px" href="{% url 'reco-home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-family: Lobster; font-size: 20px" href="{% url 'prf' %}">Profile</a>
         </li>
         <li class="nav-item avatar">
           <a class="nav-link p-0" href="{% url 'logout' %}">
@@ -179,7 +182,7 @@
       
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">2020:
-          <a href="https://github.com/RAS217/Music-recommendation-system"> Project Source</a>
+          <a href="https://github.com/Arna-Maity/Music-recommendation-system/tree/Windows"> Project Source</a>
         </div>
         <!-- Copyright -->
       
