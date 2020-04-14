@@ -1,1 +1,8 @@
-<h1>It Works!</h1>
+{% extends 'recommendpg/base.html' %}
+{% block content %}
+<h1 class="flob">Welcome {{ user.username }} !</h1>
+{% endblock %}
+
+{% block footer-head %}
+<footer class="page-footer font-small fixed-bottom unique-color-dark pt-4 ">
+{% endblock %}
