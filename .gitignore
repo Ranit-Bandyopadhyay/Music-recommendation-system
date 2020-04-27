@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+mrs/SECRET_KEY.txt
+db.sqlite3
+test.py
+spotify-music-genre-list/
+recommendpg/templates/recommendpg/login.html

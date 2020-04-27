@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Music Recommender</title>
+        {% endif %}
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="{% static 'recommendpg/css/bootstrap.min.css' %}">
+        <!-- Material Design Bootstrap -->
+        <link rel="stylesheet" href="{% static 'recommendpg/css/mdb.min.css' %}">
+        <!-- Your custom styles (optional) -->
+        <link rel="stylesheet" href="{% static 'recommendpg/css/style.css' %}">
+        <!-- Google Fonts-->
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <style>
+                .fmer {
+                  font-family: 'Merriweather', serif;
+                  font-size: 20px;
+                  text-align: center;
+                }
+
+                .flob{
+                    font-family: 'Lobster', cursive;
+                  font-size: 30px;
+                  text-align: center;
+                }
+                .image-border {
+                 border-color:grey;
+                 border-width: 5px;
+                 border-style: solid;
+                 border-radius: 50%;
+               }
+
+                .image {
+                  width: 100px;
+                }
+              </style>
+
+            <script>
+            </script>
+
+    </head>
+    <body>
+      <!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color-dark lighten-1">
+    <a class="navbar-brand fmer" href="#">WELCOME TO THE MUSIC RECOMMENDATION SYSTEM</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+      aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+ <!--     <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+      </ul>  -->
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item">
+          <a class="nav-link" style="font-family: Lobster; font-size: 20px" href="{% url 'reco-home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-family: Lobster; font-size: 20px" href="{% url 'prf' %}">Profile</a>
+        </li>
+        <li class="nav-item avatar">
+          <a class="nav-link p-0" href="{% url 'logout' %}">
+            <img src="{% static 'recommendpg/assets/583926332.jpg' %}" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35"></a>
+            </li>
+          </ul>
+      {% else %}
+             <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+      </ul>
+
+      {% endif %}
+
+
+    </div>
+  </nav>
+  <!--/.Navbar -->
+
+  <!--          <div class="container">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-6 font-weight-bolder fmer"><em><strong><h5>WELCOME TO THE MUSIC RECOMMENDATION SYSTEM.</h5></strong></em></div>
+                      <div class="col-md-3"></div>
+                    </div>
+                  </div>
+-->
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert">
+              {{ message }}
+            </div>
+            {% endfor %}
+        {% endif%}
+
+        {% block content %}
+
+        {% endblock %}
+
+
+        <!-- Footer -->
+       {% block footer-head %}
+        <footer class="page-footer font-small unique-color-dark pt-4 ">
+        {% endblock %}
+        <!-- Footer Text -->
+        <div class="container-fluid text-center text-md-left">
+
+          <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 font-weight-bolder"><em><strong><h5 style="padding-left:50px">Contact the Devlopers:</h5></strong></em></div>
+                <div class="col-md-3"></div>
+          </div>
+      
+          <!-- Grid row -->
+          <div class="row">
+      
+            <!-- Grid column -->
+            <div class="col-md-6 mt-md-0 mt-3">
+      
+              <!-- Content -->
+              <h5 class="text-uppercase font-weight-bold">Ranit Banerjee</h5>
+              <div class="row">
+                <div class="col-md-2">
+              <img class="image image-border" src="{% static 'recommendpg/assets/ranit.jpeg' %}">
+                </div>
+                <div class="col-md-10">
+              <p>Core Logic Developer</p>
+              <a href="https://www.linkedin.com/in/ranit-bandyopadhyay-991963157/" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+              <a href="https://github.com/RAS217/" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+                </div>
+              </div>
+            </div>
+            <!-- Grid column -->
+      
+            <hr class="clearfix w-100 d-md-none pb-3">
+      
+            <!-- Grid column -->
+            <div class="col-md-6 mb-md-0 mb-3">
+      
+              <!-- Content -->
+              <h5 class="text-uppercase font-weight-bold">Arna Maity</h5>
+              <div class="row">
+                  <div class="col-md-2">
+              <img class="image image-border" src="{% static 'recommendpg/assets/Arna.jpg' %}">
+            </div>
+            <div class="col-md-10">
+              <p>Frontend Developer</p>
+              <a href="https://www.linkedin.com/in/arna-maity-b22854159/" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+              <a href="https://github.com/Arna-Maity/" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+                </div>
+              </div>
+      
+            </div>
+            <!-- Grid column -->
+      
+          </div>
+          <!-- Grid row -->
+      
+        </div>
+        <!-- Footer Text -->
+      
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">2020:
+          <a href="https://github.com/Arna-Maity/Music-recommendation-system/tree/Windows"> Project Source</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
+
+          <!-- jQuery -->
+  <script type="text/javascript" src="{% static 'recommendpg/js/jquery.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'recommendpg/js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'recommendpg/js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'recommendpg/js/mdb.min.js' %}"></script>
+  <!-- Font Awesome JavaScript -->
+  <script type="text/javascript" src="{% static 'recommendpg/js/brands.js' %}"></script>
+  <script type="text/javascript" src="{% static 'recommendpg/js/solid.js' %}"></script>
+  <script type="text/javascript" src="{% static 'recommendpg/js/fontawesome.js' %}"></script>
+  <!-- Jquery -->
+  <script type="text/javascript" src="{% static 'recommendpg/js/jquery.js' %}"></script>
+  
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript"></script>
+    </body>
+</html>

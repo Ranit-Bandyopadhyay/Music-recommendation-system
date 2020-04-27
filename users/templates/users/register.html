@@ -1,0 +1,23 @@
+{% extends "recommendpg/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+<form class="text-center border border-light p-5" action="#!" method="POST">
+    {% csrf_token %}
+
+  {{ form|crispy }}
+  <button class="btn btn-gradient" type="submit">Register</button>
+  <div class="border-top pt-3">
+      <small class="text-muted">
+          Already have an account? <a class="ml-2" href="{% url 'login' %}">Login</a>
+      </small>
+  </div>
+</form>
+</div>
+<!-- Default form register -->
+
+{% endblock %}
+
+{% block footer-head %}
+<footer class="page-footer font-small unique-color-dark pt-4 ">
+{% endblock %}

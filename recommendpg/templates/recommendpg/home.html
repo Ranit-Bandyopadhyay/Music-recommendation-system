@@ -1,0 +1,102 @@
+{% extends "recommendpg/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- Main navigation -->
+<!--Main Layout-->
+<main>
+  <div class="container">
+    <!--Grid row-->
+    <div class="row py-5">
+      <!--Grid column-->
+      <div class="col-md-12 text-center">
+        <p class="flob">Welcome to the Music Recommender!</p>
+        <p class="flob">Ready to get started? Let's Go!</p>
+          <p class="flob">Just enter the name of the Artist in the searchbar below...</p>
+          <p class="flob">To get the recommendations, just click of the album art of the corresponding song...</p>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+</main>
+<!--Main Layout-->
+<div class="container" style="padding-left: 25%;">
+<!--<form class="form-inline mr-auto" method="POST">
+  {% csrf_token %}
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="artist">
+    <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+  </form> -->
+<form action="#!" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+    <a href="{% url 'reco-home' %}">Go Back</a>
+</form>
+</div>
+  <div id="preloader">
+ <!-- <div class="la-ball-atom la-dark la-3x">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div> -->
+    <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+      </div>
+  </div>
+</div>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3">
+
+        {% for track in tracks %}
+        <div class="col mb-4">
+            <!-- Card -->
+            <div class="card">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img class="card-img-top" src="{{ track.art }}"
+                         alt="Card image cap">
+                    <a href="http://127.0.0.1:8000/recommend/{{ track.id }}">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+
+                    <!--Title-->
+                    <h4 class="card-title">{{ track.name }}</h4>
+                    <!--Text-->
+                    <p class="card-text">{{ track.album.album_type }}</p>
+                            <ul>
+                    {% for artist in track.album.artists %}
+                                <li class="card-text">{{ artist.name }}</li>
+                    {% endfor %}
+                    <li class="card-text"> Duration: {{ track.duration }}</li>
+                                </ul>
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <!--<button type="button" class="btn btn-light-blue btn-md">Read more</button> -->
+                    <a href="{{ track.link }}"><i class="fab fa-spotify fa-2x "></i></a>
+
+                </div>
+
+            </div>
+            <!-- Card -->
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer-head %}
+<footer class="page-footer font-small unique-color-dark pt-4 ">
+{% endblock %}

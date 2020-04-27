@@ -1,0 +1,25 @@
+{% extends "recommendpg/base.html" %}
+{% block content %}
+<div class="container">
+<form class="text-center border border-light p-5" action="#!" method="POST">
+    {% csrf_token %}
+
+  {{ form.as_p }}
+  <div class="border-top pt-3">
+  <button class="btn btn-gradient" type="submit">Login</button>
+  </div>
+  <div class="border-top pt-3">
+        <small class="text-muted">
+            New to Music Recommender? <a class="ml-2" href="{% url 'register' %}">Register</a>
+        </small>
+    </div>
+</form>
+</div>
+<!-- Default form register -->
+
+
+{% endblock %}
+
+{% block footer-head %}
+<footer class="page-footer font-small fixed-bottom unique-color-dark pt-4 ">
+{% endblock %}

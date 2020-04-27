@@ -1,0 +1,13 @@
+[all]
+bears = PEP8Bear,SpaceConsistencyBear
+use_spaces = True
+
+[all.mrs]
+files = mrs/*.py
+
+[all.recommendpg]
+files = recommendpg/*.py
+
+[all.users]
+files = users/*.py
+

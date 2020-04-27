@@ -1,0 +1,18 @@
+{% extends "recommendpg/base.html" %}
+{% block content %}
+<div class="container">
+    <h1>You have been logged out.</h1>
+        <div class="border-top pt-3">
+                <small class="text-muted">
+                    <a class="ml-2" href="{% url 'login' %}">Login again</a>
+                </small>
+            </div>
+</div>
+<!-- Default form register -->
+
+
+{% endblock %}
+
+{% block footer-head %}
+<footer class="page-footer font-small fixed-bottom unique-color-dark pt-4 ">
+{% endblock %}
