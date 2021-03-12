@@ -12,8 +12,8 @@ import math
 #import platform
 
 def getsphandle():
-    client_credentials_manager = SpotifyClientCredentials(client_secret='0d2e381e77fa48c9b0504b4559eb1613',
-                                                      client_id='60512ae1d0614bea93fab9ba5f58e73a')
+    client_credentials_manager = SpotifyClientCredentials(client_secret='',
+                                                      client_id='')
 
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     return sp
