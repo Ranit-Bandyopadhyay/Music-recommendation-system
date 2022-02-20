@@ -24,4 +24,3 @@ You can find a short demo of the finished project in [this link](https://www.you
 
 # Setup Guide
 Here is a link to [setup the project](https://drive.google.com/file/d/1r15ssGM-lUMU6S_dsrHtE85oNayaonjb/view?usp=sharing).
-docs/Setup_Guide.pdf
