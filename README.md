@@ -23,4 +23,5 @@ While in the root directory of the project, run the following command:
 You can find a short demo of the finished project in [this link](https://www.youtube.com/watch?v=Qz5_B1TEcpA&t=12s)
 
 # Setup Guide
-Here is a link to [setup the project](docs/Setup_Guide.pdf).
+Here is a link to [setup the project](https://drive.google.com/file/d/1r15ssGM-lUMU6S_dsrHtE85oNayaonjb/view?usp=sharing).
+docs/Setup_Guide.pdf
